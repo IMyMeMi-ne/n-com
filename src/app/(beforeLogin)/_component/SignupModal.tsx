@@ -1,6 +1,6 @@
 "use client";
 
-import style from "./signup.module.css";
+import style from "./SignupModal.module.css";
 import { useRouter } from "next/navigation";
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
 
@@ -14,7 +14,6 @@ export default function SignupModal() {
   const router = useRouter();
   const onClickClose = () => {
     router.back();
-    // TODO: 뒤로가기가 /home이 아니면 /home으로 보내기
   };
 
   const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
