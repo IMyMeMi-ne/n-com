@@ -1,4 +1,4 @@
-import styles from "@/app/page.module.css";
+import styles from "@/app/(beforeLogin)/_component/main.module.css";
 import nLogo from "/public/nLogo.webp";
 import Image from "next/image";
 import Link from "next/link";
