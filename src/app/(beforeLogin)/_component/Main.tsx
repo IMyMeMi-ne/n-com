@@ -1,5 +1,5 @@
 import styles from "@/app/(beforeLogin)/_component/main.module.css";
-import nLogo from "/public/nLogo.webp";
+import nLogo from "/nLogo.webp";
 import Image from "next/image";
 import Link from "next/link";
 export default function Main() {
