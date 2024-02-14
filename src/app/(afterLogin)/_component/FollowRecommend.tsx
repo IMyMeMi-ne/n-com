@@ -13,14 +13,15 @@ export default function FollowRecommend() {
     hashTag: "@namhyun",
     image: "/darkXLogo.jpg",
   };
+  const onClickFollowButton = () => {};
   return (
     <div className={style.container}>
       <div className={style.userLogoSection}>
         <div className={style.userLogo}>
           <Image
             src={fakeUser.image}
-            width={30}
-            height={30}
+            width={40}
+            height={40}
             alt={fakeUser.id}
           ></Image>
         </div>
@@ -28,6 +29,9 @@ export default function FollowRecommend() {
       <div className={style.userInfo}>
         <div className={style.userId}>{fakeUser.id}</div>
         <div className={style.userHashTag}>{fakeUser.hashTag}</div>
+      </div>
+      <div className={style.followButtonSection}>
+        <button onClick={onClickFollowButton}>팔로우</button>
       </div>
     </div>
   );
