@@ -16,6 +16,7 @@
 }
 
 .postForm {
+  margin-top: 101px;
   display: flex;
   padding: 16px 16px 8px;
   border-color: rgb(239, 243, 244);

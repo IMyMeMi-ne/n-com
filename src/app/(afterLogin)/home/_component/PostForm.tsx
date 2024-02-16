@@ -21,7 +21,7 @@ export default function PostForm() {
     imageRef.current?.click();
   };
   const me = {
-    image: "/public/nLogo.webp",
+    image: "/nLogo.webp",
     id: "Namhyun",
   };
   return (
