@@ -4,7 +4,7 @@ import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import "dayjs/locale/ko";
-
+import ActionButtons from "./ActionButtons";
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
 
@@ -31,22 +31,24 @@ export default function Post() {
               height={50}
             />
           </Link>
-          <div className={style.postShade} />
         </div>
         <div className={style.postBody}>
-          <Link href={`/${target.User.id}`}>
-            <span className={style.postUserName}>{target.User.nickname}</span>
-            &nbsp;
-            <span className={style.postUserId}>@{target.User.id}</span>
-            &nbsp; · &nbsp;
-          </Link>
-          <span className={style.postDate}>
-            {dayjs(target.createdAt).fromNow(true)}
-          </span>
+          <div className={style.postMeta}>
+            <Link href={`/${target.User.id}`}>
+              <span className={style.postUserName}>{target.User.nickname}</span>
+              &nbsp;
+              <span className={style.postUserId}>@{target.User.id}</span>
+              &nbsp; · &nbsp;
+            </Link>
+            <span className={style.postDate}>
+              {dayjs(target.createdAt).fromNow(true)}
+            </span>
+
+            <div>{target.content}</div>
+          </div>
+          <div>{/* <PostImages post={target} /> */}</div>
+          <ActionButtons />
         </div>
-        <div>{target.content}</div>
-        <div>{/* <PostImages post={target} /> */}</div>
-        {/* <ActionButtons /> */}
       </div>
     </article>
   );
