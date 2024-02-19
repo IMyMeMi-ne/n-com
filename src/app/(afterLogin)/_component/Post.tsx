@@ -43,9 +43,8 @@ export default function Post() {
             <span className={style.postDate}>
               {dayjs(target.createdAt).fromNow(true)}
             </span>
-
-            <div>{target.content}</div>
           </div>
+          <div>{target.content}</div>
           <div>{/* <PostImages post={target} /> */}</div>
           <ActionButtons />
         </div>
