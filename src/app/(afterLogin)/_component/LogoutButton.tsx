@@ -11,7 +11,7 @@ export default function LogoutButton() {
   return (
     <button className={style.logoutButton} onClick={onLogout}>
       <div className={style.logoutUserImage}>
-        <Image width={40} height={40} src={me.image} alt={me.id} />
+        <Image width={40} height={40} src={me.image} alt={me.id} priority />
       </div>
       <div className={style.logoutUserName}>
         <div>{me.id}</div>

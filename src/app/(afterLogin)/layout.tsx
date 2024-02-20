@@ -19,7 +19,13 @@ export default function AfterLoginLayout({ children, modal }: AfterLoginProps) {
           <div className={style.leftSectionFixed}>
             <Link className={style.logo} href="/home">
               <div className={style.logoPill}>
-                <Image src="/nLogo.webp" alt="nLogo" width={40} height={40} />
+                <Image
+                  src="/nLogo.webp"
+                  alt="nLogo"
+                  width={40}
+                  height={40}
+                  priority
+                />
               </div>
             </Link>
             <nav>

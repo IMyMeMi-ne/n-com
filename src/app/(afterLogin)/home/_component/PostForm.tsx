@@ -22,7 +22,7 @@ export default function PostForm() {
     <form className={style.postForm} onSubmit={onSubmit}>
       <div className={style.userSection}>
         <div className={style.userImage}>
-          <Image src={me.image} alt={me.id} width={40} height={40} />
+          <Image src={me.image} alt={me.id} width={40} height={40} priority />
         </div>
       </div>
       <div className={style.inputSection}>
