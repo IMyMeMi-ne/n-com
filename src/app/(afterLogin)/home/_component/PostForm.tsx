@@ -1,12 +1,6 @@
 "use client";
 import style from "./postForm.module.css";
-import {
-  useState,
-  useRef,
-  ChangeEvent,
-  ChangeEventHandler,
-  FormEventHandler,
-} from "react";
+import { useState, useRef, ChangeEventHandler, FormEventHandler } from "react";
 import Image from "next/image";
 export default function PostForm() {
   const imageRef = useRef<HTMLInputElement>(null);

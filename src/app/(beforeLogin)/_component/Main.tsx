@@ -1,12 +1,17 @@
 import styles from "@/app/(beforeLogin)/_component/main.module.css";
-import nLogo from "/nLogo.webp";
 import Image from "next/image";
 import Link from "next/link";
 export default function Main() {
   return (
     <>
       <div className={styles.left}>
-        <Image src={nLogo} alt="logo" priority={true} />
+        <Image
+          src="/nLogo.webp"
+          alt="logo"
+          priority={true}
+          width={1100}
+          height={1100}
+        />
       </div>
       <div className={styles.right}>
         <h1>지금 일어나고 있는 일</h1>
