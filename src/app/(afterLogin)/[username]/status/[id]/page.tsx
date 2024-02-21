@@ -1,3 +1,3 @@
 export default function Page() {
-  return null;
+  return <div>상세페이지</div>;
 }
