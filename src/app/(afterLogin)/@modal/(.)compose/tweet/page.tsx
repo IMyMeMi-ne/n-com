@@ -4,15 +4,17 @@ import style from "./modal.module.css";
 import { useRef, useState } from "react";
 import Image from "next/image";
 export default function TweetModal() {
-  const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState("");
   const imageRef = useRef<HTMLInputElement>(null);
   const onSubmit = () => {};
   const onClickClose = () => {};
   const onClickButton = () => {};
-  const onChangeContent = () => {};
+  const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
 
   const me = {
-    id: "namhyun",
+    id: "Namhyun",
     image: "/nLogo.webp",
   };
 
@@ -35,7 +37,13 @@ export default function TweetModal() {
           <div className={style.modalBody}>
             <div className={style.postUserSection}>
               <div className={style.postUserImage}>
-                <Image src={me.image} alt={me.id} width={40} height={40} />
+                <Image
+                  src={me.image}
+                  alt={me.id}
+                  width={40}
+                  height={40}
+                  priority
+                />
               </div>
             </div>
             <div className={style.inputDiv}>

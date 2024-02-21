@@ -23,7 +23,7 @@ export default function FollowRecommend() {
             width={40}
             height={40}
             alt={fakeUser.id}
-          ></Image>
+          />
         </div>
       </div>
       <div className={style.userInfo}>
