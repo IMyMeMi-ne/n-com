@@ -1,19 +1,27 @@
 "use client";
-
 import style from "./post.module.css";
 import cx from "classnames";
-export default function ActionButton() {
-  const commented = true;
-  const reposted = true;
+
+type Props = {
+  white?: boolean;
+};
+export default function ActionButtons({ white }: Props) {
+  const commented = false;
+  const reposted = false;
   const liked = false;
 
   const onClickComment = () => {};
   const onClickRepost = () => {};
   const onClickHeart = () => {};
+
   return (
     <div className={style.actionButtons}>
       <div
-        className={cx(style.commentButton, { [style.commented]: commented })}
+        className={cx(
+          style.commentButton,
+          { [style.commented]: commented },
+          white && style.white
+        )}
       >
         <button onClick={onClickComment}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
@@ -24,7 +32,13 @@ export default function ActionButton() {
         </button>
         <div className={style.count}>{1 || ""}</div>
       </div>
-      <div className={cx(style.repostButton, reposted && style.reposted)}>
+      <div
+        className={cx(
+          style.repostButton,
+          reposted && style.reposted,
+          white && style.white
+        )}
+      >
         <button onClick={onClickRepost}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
@@ -34,7 +48,13 @@ export default function ActionButton() {
         </button>
         <div className={style.count}>{1 || ""}</div>
       </div>
-      <div className={cx([style.heartButton, liked && style.liked])}>
+      <div
+        className={cx([
+          style.heartButton,
+          liked && style.liked,
+          white && style.white,
+        ])}
+      >
         <button onClick={onClickHeart}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
