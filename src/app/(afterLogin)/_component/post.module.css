@@ -84,11 +84,96 @@
   display: flex;
   flex-direction: row;
 }
-
-.postImageSection img {
+.postImageSection {
+  display: inline-block;
   margin-top: 12px;
   width: 100%;
   border-radius: 16px;
+  height: 100%;
+}
+.postImageSection.oneImage {
+  max-height: 510px;
+  background-repeat: no-repeat;
+}
+.postImageSection.twoImages {
+  height: 272px;
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+.postImageSection.twoImages a {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+.postImageSection.twoImages a:first-child {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.postImageSection.twoImages a:last-child {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+.postImageSection.threeImages {
+  height: 272px;
+  display: flex;
+  gap: 2px;
+  flex-direction: row;
+}
+
+.postImageSection.threeImages > a,
+.postImageSection.threeImages > div {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+.postImageSection.threeImages > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+postImageSection.threeImages > div > a {
+  flex: 1;
+}
+
+.postImageSection.threeImage > div > a {
+  flex: 1;
+}
+.postImageSection.threeImage > a:first-child {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+}
+.postImageSection.threeImage > div > a:first-child {
+  border-top-right-radius: 16px;
+}
+.postImageSection.threeImage > div > a:last-child {
+  border-bottom-right-radius: 16px;
+}
+
+.postImageSection.fourImages {
+  height: 272px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.postImageSection.fourImages > a:nth-child(1) {
+  border-top-left-radius: 16px;
+}
+.postImageSection.fourImages > a:nth-child(2) {
+  border-top-right-radius: 16px;
+}
+.postImageSection.fourImages > a:nth-child(3) {
+  border-bottom-left-radius: 16px;
+}
+.postImageSection.fourImages > a:nth-child(4) {
+  border-bottom-right-radius: 16px;
+}
+.postImageSection img {
+  border-radius: 16px;
+  max-height: 510px;
+  width: 100%;
+  height: 100%;
 }
 
 .actionButtons {
