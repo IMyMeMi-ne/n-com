@@ -1,7 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-// import { signIn } from '@/auth';
+import { signIn } from '@/auth';
 
 export default async (prevState: any, formData: FormData) => {
   if (!formData.get('id') || !(formData.get('id') as string)?.trim()) {
