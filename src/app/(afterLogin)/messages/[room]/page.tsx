@@ -1,34 +1,34 @@
-import { faker } from "@faker-js/faker";
-import style from "./chatRoom.module.css";
-import Link from "next/link";
-import BackButton from "@/app/(afterLogin)/_component/BackButton";
-import cx from "classnames";
-import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ko";
-import dayjs from "dayjs";
+import { faker } from '@faker-js/faker';
+import style from './chatRoom.module.css';
+import Link from 'next/link';
+import BackButton from '../../_component/BackButton';
+import cx from 'classnames';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ko';
+import dayjs from 'dayjs';
 
-dayjs.locale("ko");
+dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
 export default function ChatRoom() {
   const user = {
-    id: "zllzl",
-    nickname: "hihihi",
+    id: 'zllzl',
+    nickname: 'hihihi',
     image: faker.image.avatar(),
   };
   const messages = [
     {
       messageId: 1,
       roomId: 123,
-      id: "Namhyun",
-      content: "안녕하세요.",
+      id: 'Namhyun',
+      content: '안녕하세요.',
       createdAt: new Date(),
     },
     {
       messageId: 2,
       roomId: 123,
-      id: "wowow",
-      content: "ㅎㅇㅎㅇ.",
+      id: 'wowow',
+      content: 'ㅎㅇㅎㅇ.',
       createdAt: new Date(),
     },
   ];
@@ -50,7 +50,7 @@ export default function ChatRoom() {
       </Link>
       <div className={style.list}>
         {messages.map((m) => {
-          if (m.id === "Namhyun") {
+          if (m.id === 'Namhyun') {
             return (
               <div
                 key={m.messageId}
@@ -58,7 +58,7 @@ export default function ChatRoom() {
               >
                 <div className={style.content}>{m.content}</div>
                 <div className={style.date}>
-                  {dayjs(m.createdAt).format("YYYY년 MM월 DD일 A HH시 mm분")}
+                  {dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}
                 </div>
               </div>
             );
@@ -70,7 +70,7 @@ export default function ChatRoom() {
             >
               <div className={style.content}>{m.content}</div>
               <div className={style.date}>
-                {dayjs(m.createdAt).format("YYYY년 MM월 DD일 A HH시 mm분")}
+                {dayjs(m.createdAt).format('YYYY년 MM월 DD일 A HH시 mm분')}
               </div>
             </div>
           );

@@ -1,7 +1,6 @@
-"use client";
-
-import style from "@/app/(afterLogin)/[username]/profile.module.css";
-import { useRouter } from "next/navigation";
+'use client';
+import style from '@/app/(afterLogin)/[username]/profile.module.css';
+import { useRouter } from 'next/navigation';
 
 export default function BackButton() {
   const router = useRouter();
