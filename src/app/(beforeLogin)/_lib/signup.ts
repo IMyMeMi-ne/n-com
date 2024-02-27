@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 
-export default async (prevState: any, formData: FormData) => {
+const signup = async (prevState: any, formData: FormData) => {
   if (!formData.get('id') || !(formData.get('id') as string)?.trim()) {
     return { message: 'no_id' };
   }
@@ -29,6 +29,11 @@ export default async (prevState: any, formData: FormData) => {
         credentials: 'include',
       }
     );
+    if (response.ok) {
+      console.log('response ok');
+    }
+    const responseData = await response.json();
+    console.log(responseData);
     console.log(response.status);
     if (response.status === 403) {
       return { message: 'user_exists' };
@@ -49,3 +54,5 @@ export default async (prevState: any, formData: FormData) => {
     redirect('/home');
   }
 };
+
+export default signup;

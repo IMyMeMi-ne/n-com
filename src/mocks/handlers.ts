@@ -10,11 +10,15 @@ function generateDate() {
   });
 }
 const User = [
-  { id: '안녕하세요?', nickname: '안녕하세요!', image: '/darkXlogo.jpg' },
-  { id: 'Namhyun', nickname: 'iMyMeMine', image: '/nLogo.webp' },
-  { id: 'leoturtle', nickname: '레오', image: faker.image.avatar() },
+  { id: 'woww', nickname: 'woww', image: '/darkXLogo.jpg' },
+  { id: 'Namhyun', nickname: '남현', image: '/nLogo.webp' },
+  { id: 'hahah', nickname: '하하', image: faker.image.avatar() },
 ];
 const Posts = [];
+const delay = (ms: number) =>
+  new Promise((res) => {
+    setTimeout(res, ms);
+  });
 
 export const handlers = [
   http.post('/api/login', () => {
@@ -44,7 +48,8 @@ export const handlers = [
       },
     });
   }),
-  http.get('/api/postRecommends', ({ request }) => {
+  http.get('/api/postRecommends', async ({ request }) => {
+    await delay(3000);
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
     return HttpResponse.json([
@@ -97,7 +102,8 @@ export const handlers = [
       },
     ]);
   }),
-  http.get('/api/followingPosts', ({ request }) => {
+  http.get('/api/followingPosts', async ({ request }) => {
+    await delay(3000);
     return HttpResponse.json([
       {
         postId: 1,
@@ -296,15 +302,15 @@ export const handlers = [
   }),
   http.get('/api/trends', ({ request }) => {
     return HttpResponse.json([
-      { tagId: 1, title: '가', count: 1264 },
-      { tagId: 2, title: '나', count: 1264 },
-      { tagId: 3, title: '다', count: 1264 },
-      { tagId: 4, title: '라', count: 1264 },
-      { tagId: 5, title: '마', count: 1264 },
-      { tagId: 6, title: '바', count: 1264 },
-      { tagId: 7, title: '사', count: 1264 },
-      { tagId: 8, title: '아', count: 1264 },
-      { tagId: 9, title: '자', count: 1264 },
+      { tagId: 1, title: '제로초', count: 1264 },
+      { tagId: 2, title: '원초', count: 1264 },
+      { tagId: 3, title: '투초', count: 1264 },
+      { tagId: 4, title: '쓰리초', count: 1264 },
+      { tagId: 5, title: '포초', count: 1264 },
+      { tagId: 6, title: '파이브초', count: 1264 },
+      { tagId: 7, title: '식스초', count: 1264 },
+      { tagId: 8, title: '세븐초', count: 1264 },
+      { tagId: 9, title: '나인초', count: 1264 },
     ]);
   }),
 ];
