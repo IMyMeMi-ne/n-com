@@ -21,13 +21,13 @@ export default function LogoutButton() {
           width={40}
           height={40}
           src={me.user?.image!}
-          alt={me.user?.id!}
+          alt={me.user?.email!}
           priority
         />
       </div>
       <div className={style.logoutUserName}>
         <div>{me.user?.name}</div>
-        <div>{me.user?.id}</div>
+        <div>@{me.user?.email}</div>
       </div>
     </button>
   );
