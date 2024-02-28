@@ -29,16 +29,11 @@ const signup = async (prevState: any, formData: FormData) => {
         credentials: 'include',
       }
     );
-    if (response.ok) {
-      console.log('response ok');
-    }
     const responseData = await response.json();
     console.log(responseData);
-    console.log(response.status);
     if (response.status === 403) {
       return { message: 'user_exists' };
     }
-    console.log(await response.json());
     shouldRedirect = true;
     await signIn('credentials', {
       username: formData.get('id'),
