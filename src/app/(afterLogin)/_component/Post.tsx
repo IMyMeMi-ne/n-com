@@ -1,40 +1,23 @@
-import style from "./post.module.css";
-import Image from "next/image";
-import Link from "next/link";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import "dayjs/locale/ko";
-import ActionButtons from "./ActionButtons";
-import PostArticle from "./PostArticle";
-import { faker } from "@faker-js/faker";
-import PostImages from "./PostImages";
-
+import style from './post.module.css';
+import Link from 'next/link';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ko';
+import ActionButtons from '@/app/(afterLogin)/_component/ActionButtons';
+import PostArticle from '@/app/(afterLogin)/_component/PostArticle';
+import PostImages from '@/app/(afterLogin)/_component/PostImages';
+import { Post } from '@/app/model/Post';
+import Image from 'next/image';
+dayjs.locale('ko');
 dayjs.extend(relativeTime);
-dayjs.locale("ko");
 
 type Props = {
   noImage?: boolean;
+  post: Post;
 };
-export default function Post({ noImage }: Props = {}) {
-  const target = {
-    postId: 1,
-    User: {
-      id: "namhyun",
-      nickname: "iMyMeMine",
-      image: "/darkXLogo.jpg",
-    },
-    content: "안녕하세요.",
-    createdAt: new Date(),
-    Images: [] as any[],
-  };
-  if (Math.random() > 0.5 && !noImage) {
-    target.Images.push(
-      { imageId: 1, link: faker.image.urlLoremFlickr() },
-      { imageId: 2, link: faker.image.urlLoremFlickr() },
-      { imageId: 3, link: faker.image.urlLoremFlickr() },
-      { imageId: 3, link: faker.image.urlLoremFlickr() }
-    );
-  }
+export default function Post({ noImage, post }: Props) {
+  const target = post;
+
   return (
     <PostArticle post={target}>
       <div className={style.postWrapper}>
@@ -46,6 +29,7 @@ export default function Post({ noImage }: Props = {}) {
               width={50}
               height={50}
             />
+            <div className={style.postShade} />
           </Link>
         </div>
         <div className={style.postBody}>
@@ -61,9 +45,11 @@ export default function Post({ noImage }: Props = {}) {
             </span>
           </div>
           <div>{target.content}</div>
-          <div>
-            <PostImages post={target} />
-          </div>
+          {!noImage && (
+            <div>
+              <PostImages post={target} />
+            </div>
+          )}
           <ActionButtons />
         </div>
       </div>

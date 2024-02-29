@@ -8,6 +8,7 @@ import TrendSection from './_component/TrendSection';
 import FollowRecommend from './_component/FollowRecommend';
 import RightSearchZone from './_component/RightSearchZone';
 import { auth } from '@/auth';
+import RQProvider from './_component/RQProvider';
 type AfterLoginProps = {
   children: ReactNode;
   modal: ReactNode;
@@ -58,22 +59,24 @@ export default async function AfterLoginLayout({
           </div>
         </section>
       </header>
-      <div className={style.rightSectionWrapper}>
-        <div className={style.rightSectionInner}>
-          <main className={style.main}>{children}</main>
-          <section className={style.rightSection}>
-            <RightSearchZone />
-            <TrendSection />
-            <div className={style.followRecommendSection}>
-              <h3>팔로우 추천</h3>
-              <FollowRecommend />
-              <FollowRecommend />
-              <FollowRecommend />
-            </div>
-          </section>
+      <RQProvider>
+        <div className={style.rightSectionWrapper}>
+          <div className={style.rightSectionInner}>
+            <main className={style.main}>{children}</main>
+            <section className={style.rightSection}>
+              <RightSearchZone />
+              <TrendSection />
+              <div className={style.followRecommendSection}>
+                <h3>팔로우 추천</h3>
+                <FollowRecommend />
+                <FollowRecommend />
+                <FollowRecommend />
+              </div>
+            </section>
+          </div>
         </div>
-      </div>
-      {modal}
+        {modal}
+      </RQProvider>
     </div>
   );
 }

@@ -56,14 +56,14 @@ export const handlers = [
       {
         postId: cursor + 1,
         User: User[0],
-        content: `${cursor + 1} Z.com is so marvelous. I'm gonna buy that.`,
+        content: `${cursor + 1} N.com is so awesome.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: cursor + 2,
         User: User[0],
-        content: `${cursor + 2} Z.com is so marvelous. I'm gonna buy that.`,
+        content: `${cursor + 2} N.com is so awesome.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -73,14 +73,14 @@ export const handlers = [
       {
         postId: cursor + 3,
         User: User[0],
-        content: `${cursor + 3} Z.com is so marvelous. I'm gonna buy that.`,
+        content: `${cursor + 3} N.com is so awesome.`,
         Images: [],
         createdAt: generateDate(),
       },
       {
         postId: cursor + 4,
         User: User[0],
-        content: `${cursor + 4} Z.com is so marvelous. I'm gonna buy that.`,
+        content: `${cursor + 4} N.com is so awesome.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -92,7 +92,7 @@ export const handlers = [
       {
         postId: cursor + 5,
         User: User[0],
-        content: `${cursor + 5} Z.com is so marvelous. I'm gonna buy that.`,
+        content: `${cursor + 5} N.com is so awesome.`,
         Images: [
           { imageId: 1, link: faker.image.urlLoremFlickr() },
           { imageId: 2, link: faker.image.urlLoremFlickr() },
@@ -108,35 +108,35 @@ export const handlers = [
       {
         postId: 1,
         User: User[0],
-        content: `${1} Stop following me. I'm too famous.`,
+        content: `${1} Thank you for following me.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: 2,
         User: User[0],
-        content: `${2} Stop following me. I'm too famous.`,
+        content: `${2} Thank you for following me.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: 3,
         User: User[0],
-        content: `${3} Stop following me. I'm too famous.`,
+        content: `${3} Thank you for following me.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: 4,
         User: User[0],
-        content: `${4} Stop following me. I'm too famous.`,
+        content: `${4} Thank you for following me.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
       {
         postId: 5,
         User: User[0],
-        content: `${5} Stop following me. I'm too famous.`,
+        content: `${5} Thank you for following me.`,
         Images: [{ imageId: 1, link: faker.image.urlLoremFlickr() }],
         createdAt: generateDate(),
       },
@@ -302,15 +302,15 @@ export const handlers = [
   }),
   http.get('/api/trends', ({ request }) => {
     return HttpResponse.json([
-      { tagId: 1, title: '제로초', count: 1264 },
-      { tagId: 2, title: '원초', count: 1264 },
-      { tagId: 3, title: '투초', count: 1264 },
-      { tagId: 4, title: '쓰리초', count: 1264 },
-      { tagId: 5, title: '포초', count: 1264 },
-      { tagId: 6, title: '파이브초', count: 1264 },
-      { tagId: 7, title: '식스초', count: 1264 },
-      { tagId: 8, title: '세븐초', count: 1264 },
-      { tagId: 9, title: '나인초', count: 1264 },
+      { tagId: 1, title: '하나', count: 1264 },
+      { tagId: 2, title: '둘', count: 1264 },
+      { tagId: 3, title: '셋', count: 1264 },
+      { tagId: 4, title: '넷', count: 1264 },
+      { tagId: 5, title: '다섯', count: 1264 },
+      { tagId: 6, title: '여섯', count: 1264 },
+      { tagId: 7, title: '일곱', count: 1264 },
+      { tagId: 8, title: '여덟', count: 1264 },
+      { tagId: 9, title: '아홉', count: 1264 },
     ]);
   }),
 ];
