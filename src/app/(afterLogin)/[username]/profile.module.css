@@ -50,22 +50,6 @@
 .userName > div:last-child {
   font-size: 15px;
 }
-.followButton {
-  border: 1px solid rgb(207, 217, 222);
-  padding: 0 16px;
-  border-radius: 17px;
-  height: 34px;
-  background-color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  color: white;
-  cursor: pointer;
-}
-.followButton:hover {
-  background-color: rgb(39, 44, 48);
-}
 
 .backButton {
   width: 34px;

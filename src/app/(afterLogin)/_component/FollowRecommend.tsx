@@ -1,6 +1,7 @@
-"use client";
-import style from "./followRecommend.module.css";
-import Image from "next/image";
+'use client';
+import style from './followRecommend.module.css';
+import Image from 'next/image';
+import FollowButton from './FollowButton';
 
 type fakeUserProps = {
   id: string;
@@ -9,11 +10,10 @@ type fakeUserProps = {
 };
 export default function FollowRecommend() {
   const fakeUser: fakeUserProps = {
-    id: "iMyMemine",
-    hashTag: "@namhyun",
-    image: "/darkXLogo.jpg",
+    id: 'iMyMemine',
+    hashTag: '@namhyun',
+    image: '/darkXLogo.jpg',
   };
-  const onClickFollowButton = () => {};
   return (
     <div className={style.container}>
       <div className={style.userLogoSection}>
@@ -30,9 +30,7 @@ export default function FollowRecommend() {
         <div className={style.userId}>{fakeUser.id}</div>
         <div className={style.userHashTag}>{fakeUser.hashTag}</div>
       </div>
-      <div className={style.followButtonSection}>
-        <button onClick={onClickFollowButton}>팔로우</button>
-      </div>
+      <FollowButton />
     </div>
   );
 }

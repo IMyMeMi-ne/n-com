@@ -1,16 +1,18 @@
-import style from "./profile.module.css";
-import Post from "@/app/(afterLogin)/_component/Post";
-import Image from "next/image";
+import style from './profile.module.css';
+import Post from '@/app/(afterLogin)/_component/Post';
+import Image from 'next/image';
+import BackButton from '../_component/BackButton';
+import FollowButton from '../_component/FollowButton';
 export default function Profile() {
   const user = {
-    id: "Namhyun",
-    nickname: "iMyMeMine",
+    id: 'Namhyun',
+    nickname: 'iMyMeMine',
   };
 
   return (
     <main className={style.main}>
       <div className={style.header}>
-        {/* <BackButton /> */}
+        <BackButton />
         <h3 className={style.headerTitle}>{user.nickname}</h3>
       </div>
       <div className={style.userZone}>
@@ -27,7 +29,7 @@ export default function Profile() {
           <div>{user.id}</div>
           <div>@{user.nickname}</div>
         </div>
-        <button className={style.followButton}>팔로우</button>
+        <FollowButton />
       </div>
       <div>
         <Post />
