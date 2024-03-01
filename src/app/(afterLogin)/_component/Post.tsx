@@ -6,17 +6,18 @@ import 'dayjs/locale/ko';
 import ActionButtons from '@/app/(afterLogin)/_component/ActionButtons';
 import PostArticle from '@/app/(afterLogin)/_component/PostArticle';
 import PostImages from '@/app/(afterLogin)/_component/PostImages';
-import { Post } from '@/app/model/Post';
+import { Post as PostProps } from '@/app/model/Post';
 import Image from 'next/image';
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
 type Props = {
   noImage?: boolean;
-  post: Post;
+  post: PostProps;
 };
 export default function Post({ noImage, post }: Props) {
   const target = post;
+  console.log(target);
 
   return (
     <PostArticle post={target}>

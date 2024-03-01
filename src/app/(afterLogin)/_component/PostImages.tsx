@@ -2,11 +2,11 @@ import style from './post.module.css';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import cx from 'classnames';
-import { Post } from '@/app/model/Post';
+import { Post as PostProps } from '@/app/model/Post';
 
 type Props = {
   children?: ReactNode;
-  post: Post;
+  post: PostProps;
 };
 
 export default function PostImages({ post }: Props) {

@@ -1,21 +1,12 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
-import style from "./post.module.css";
-import { useRouter } from "next/navigation";
+import { ReactNode } from 'react';
+import style from './post.module.css';
+import { useRouter } from 'next/navigation';
+import { Post as PostProps } from '@/app/model/Post';
 type Props = {
   children: ReactNode;
-  post: {
-    postId: number;
-    content: string;
-    User: {
-      id: string;
-      nickname: string;
-      image: string;
-    };
-    createdAt: Date;
-    Images: any[];
-  };
+  post: PostProps;
 };
 export default function PostArticle({ children, post }: Props) {
   const router = useRouter();
