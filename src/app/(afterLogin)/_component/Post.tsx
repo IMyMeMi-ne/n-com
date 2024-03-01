@@ -17,7 +17,6 @@ type Props = {
 };
 export default function Post({ noImage, post }: Props) {
   const target = post;
-  console.log(target);
 
   return (
     <PostArticle post={target}>

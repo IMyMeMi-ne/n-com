@@ -12,8 +12,11 @@ export default function RQProvider({ children }: Props) {
     () =>
       new QueryClient({
         defaultOptions: {
+          //ReactQuery 전역 옵션
           queries: {
             refetchOnWindowFocus: false,
+            retryOnMount: true,
+            refetchOnReconnect: false,
             retry: false,
           },
         },
