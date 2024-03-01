@@ -3,6 +3,7 @@ import TabProvider from './_component/TabProvider';
 import Tab from './_component/Tab';
 import PostForm from './_component/PostForm';
 import PostRecommends from './_component/PostRecommends';
+import TabDecider from './_component/TabDecider';
 import {
   dehydrate,
   HydrationBoundary,
@@ -23,6 +24,7 @@ export default async function HomePage() {
         <TabProvider>
           <Tab />
           <PostForm />
+          <TabDecider />
           <PostRecommends />
         </TabProvider>
       </HydrationBoundary>
