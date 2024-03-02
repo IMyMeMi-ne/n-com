@@ -25,7 +25,6 @@ export default async function HomePage() {
           <Tab />
           <PostForm />
           <TabDecider />
-          <PostRecommends />
         </TabProvider>
       </HydrationBoundary>
     </main>
