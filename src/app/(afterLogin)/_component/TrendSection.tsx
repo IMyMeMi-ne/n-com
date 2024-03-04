@@ -15,6 +15,7 @@ export default function TrendSection() {
     queryFn: getTrends,
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
+    enabled: !!session?.user,
   });
   if (pathname === '/explore') return null;
   if (session?.user) {
