@@ -2,7 +2,13 @@
 import style from './rightSearchZone.module.css';
 import { useRouter } from 'next/navigation';
 
-export default function SearchForm() {
+type SearchFormProps = {
+  q?: string;
+  f?: string;
+  pf?: string;
+};
+
+export default function SearchForm({ q }: SearchFormProps) {
   const router = useRouter();
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
