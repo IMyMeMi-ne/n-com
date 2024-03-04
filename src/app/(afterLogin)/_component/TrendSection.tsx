@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import { getTrends } from '../_lib/getTrends';
-import { Hashtag } from '@/app/model/Hashtag';
+import { Hashtag } from '@/app/model/HashTag';
 
 export default function TrendSection() {
   const pathname = usePathname();

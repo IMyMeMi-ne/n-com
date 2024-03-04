@@ -5,10 +5,10 @@ import Image from 'next/image';
 import NavMenu from '@/app/(afterLogin)/_component/NavMenu';
 import LogoutButton from './_component/LogoutButton';
 import TrendSection from './_component/TrendSection';
+import FollowRecommend from './_component/FollowRecommend';
 import RightSearchZone from './_component/RightSearchZone';
 import { auth } from '@/auth';
 import RQProvider from './_component/RQProvider';
-import FollowRecommendSection from './_component/FollowRecommendSection';
 type AfterLoginProps = {
   children: ReactNode;
   modal: ReactNode;
@@ -68,7 +68,9 @@ export default async function AfterLoginLayout({
               <TrendSection />
               <div className={style.followRecommendSection}>
                 <h3>팔로우 추천</h3>
-                <FollowRecommendSection />
+                <FollowRecommend />
+                <FollowRecommend />
+                <FollowRecommend />
               </div>
             </section>
           </div>
