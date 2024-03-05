@@ -8,8 +8,9 @@ import style from '@/app/(afterLogin)/[username]/profile.module.css';
 
 type Props = {
   id: string;
+  noImage: boolean;
 };
-export default function SinglePost({ id }: Props) {
+export default function SinglePost({ id, noImage }: Props) {
   const { data: post, isError } = useQuery<
     PostProps,
     Object,
@@ -25,5 +26,5 @@ export default function SinglePost({ id }: Props) {
     return <div className={style.noUserText}>게시글을 찾을 수 없습니다!</div>;
   }
   if (!post) return null;
-  return <Post key={post.postId} post={post} />;
+  return <Post key={post.postId} post={post} noImage={noImage} />;
 }
