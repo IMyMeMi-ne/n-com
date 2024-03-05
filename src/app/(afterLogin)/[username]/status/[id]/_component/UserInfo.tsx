@@ -11,17 +11,36 @@ type Props = {
   username: string;
 };
 
-export default function Profile({ username }: Props) {
-  const { data: user } = useQuery<User, Object, User, [_1: string, _2: string]>(
-    {
-      queryKey: ['users', username],
-      queryFn: getUser,
-      staleTime: 5 * 60 * 1000,
-      gcTime: 10 * 60 * 1000,
-    }
-  );
-  if (!user) {
-    return null;
+export default function UserInfo({ username }: Props) {
+  const { data: user, error } = useQuery<
+    User,
+    Object,
+    User,
+    [_1: string, _2: string]
+  >({
+    queryKey: ['users', username],
+    queryFn: getUser,
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+  });
+  if (error || !user) {
+    return (
+      <>
+        <div className={style.header}>
+          <BackButton />
+          <h3 className={style.headerTitle}>프로필</h3>
+        </div>
+        <div className={style.userZone}>
+          <div className={style.userImage}>
+            <img src="/image-not-found.jpg" alt={username} />
+          </div>
+          <div className={style.userName}>
+            <div>@{username}</div>
+          </div>
+        </div>
+        <div className={style.noUserText}>계정이 존재하지 않습니다!</div>
+      </>
+    );
   }
   return (
     <>

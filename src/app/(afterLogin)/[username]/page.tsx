@@ -1,7 +1,4 @@
 import style from './profile.module.css';
-import Image from 'next/image';
-import BackButton from '../_component/BackButton';
-import FollowButton from '../_component/FollowButton';
 import { getUser } from './_lib/getUser';
 import { getUserPosts } from './_lib/getUserPosts';
 import {
@@ -10,6 +7,7 @@ import {
   dehydrate,
 } from '@tanstack/react-query';
 import UserPosts from './_component/UserPosts';
+import UserInfo from './status/[id]/_component/UserInfo';
 
 type Props = {
   params: { username: string };
@@ -30,6 +28,7 @@ export default async function Profile({ params }: Props) {
   return (
     <main className={style.main}>
       <HydrationBoundary state={dehydratedState}>
+        <UserInfo username={username} />
         <div>
           <UserPosts username={username} />
         </div>

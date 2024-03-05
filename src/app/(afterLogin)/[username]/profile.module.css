@@ -65,3 +65,13 @@
 .backButton:hover {
   background-color: rgba(15, 20, 25, 0.1);
 }
+
+.noUserText {
+  font-size: 40px;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100px;
+  margin-top: 20px;
+}
