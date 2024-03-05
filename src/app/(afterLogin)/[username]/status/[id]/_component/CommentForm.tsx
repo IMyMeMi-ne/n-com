@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import style from "./commentForm.module.css";
-import Image from "next/image";
+import { useRef, useState } from 'react';
+import style from './commentForm.module.css';
+import Image from 'next/image';
 export default function CommentForm() {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const imageRef = useRef<HTMLInputElement>(null);
   const onClickButton = () => {};
   const onSubmit = () => {};
   const onChange = () => {};
   const me = {
-    id: "Namhyun",
+    id: 'Namhyun',
   };
 
   return (

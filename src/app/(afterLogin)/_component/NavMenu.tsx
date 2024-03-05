@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import { useSelectedLayoutSegment } from "next/navigation";
-import Link from "next/link";
-import style from "@/app/(afterLogin)/_component/NavMenu.module.css";
+import { useSelectedLayoutSegment } from 'next/navigation';
+import Link from 'next/link';
+import style from '@/app/(afterLogin)/_component/NavMenu.module.css';
 export default function NavMenu() {
   const segment: string | null = useSelectedLayoutSegment();
-  console.log(segment);
   const me = {
-    id: "Namhyun",
+    id: 'Namhyun',
   };
 
   return (
@@ -15,7 +14,7 @@ export default function NavMenu() {
       <li>
         <Link href="/home">
           <div className={style.navPill}>
-            {segment === "home" ? (
+            {segment === 'home' ? (
               <>
                 <svg
                   width={26}
@@ -27,7 +26,7 @@ export default function NavMenu() {
                     <path d="M12 1.696L.622 8.807l1.06 1.696L3 9.679V19.5C3 20.881 4.119 22 5.5 22h13c1.381 0 2.5-1.119 2.5-2.5V9.679l1.318.824 1.06-1.696L12 1.696zM12 16.5c-1.933 0-3.5-1.567-3.5-3.5s1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5z"></path>
                   </g>
                 </svg>
-                <div style={{ fontWeight: "bold" }}>홈</div>
+                <div style={{ fontWeight: 'bold' }}>홈</div>
               </>
             ) : (
               <>
@@ -50,7 +49,7 @@ export default function NavMenu() {
       <li>
         <Link href="/explore">
           <div className={style.navPill}>
-            {segment && ["search", "explore"].includes(segment) ? (
+            {segment && ['search', 'explore'].includes(segment) ? (
               <>
                 <svg
                   width={26}
@@ -62,7 +61,7 @@ export default function NavMenu() {
                     <path d="M10.25 4.25c-3.314 0-6 2.686-6 6s2.686 6 6 6c1.657 0 3.155-.67 4.243-1.757 1.087-1.088 1.757-2.586 1.757-4.243 0-3.314-2.686-6-6-6zm-9 6c0-4.971 4.029-9 9-9s9 4.029 9 9c0 1.943-.617 3.744-1.664 5.215l4.475 4.474-2.122 2.122-4.474-4.475c-1.471 1.047-3.272 1.664-5.215 1.664-4.971 0-9-4.029-9-9z"></path>
                   </g>
                 </svg>
-                <div style={{ fontWeight: "bold" }}>탐색하기</div>
+                <div style={{ fontWeight: 'bold' }}>탐색하기</div>
               </>
             ) : (
               <>
@@ -85,7 +84,7 @@ export default function NavMenu() {
       <li>
         <Link href="/messages">
           <div className={style.navPill}>
-            {segment === "messages" ? (
+            {segment === 'messages' ? (
               <>
                 <svg
                   width={26}
@@ -97,7 +96,7 @@ export default function NavMenu() {
                     <path d="M1.998 4.499c0-.828.671-1.499 1.5-1.499h17c.828 0 1.5.671 1.5 1.499v2.858l-10 4.545-10-4.547V4.499zm0 5.053V19.5c0 .828.671 1.5 1.5 1.5h17c.828 0 1.5-.672 1.5-1.5V9.554l-10 4.545-10-4.547z"></path>
                   </g>
                 </svg>
-                <div style={{ fontWeight: "bold" }}>쪽지</div>
+                <div style={{ fontWeight: 'bold' }}>쪽지</div>
               </>
             ) : (
               <>
@@ -133,7 +132,7 @@ export default function NavMenu() {
                       <path d="M17.863 13.44c1.477 1.58 2.366 3.8 2.632 6.46l.11 1.1H3.395l.11-1.1c.266-2.66 1.155-4.88 2.632-6.46C7.627 11.85 9.648 11 12 11s4.373.85 5.863 2.44zM12 2C9.791 2 8 3.79 8 6s1.791 4 4 4 4-1.79 4-4-1.791-4-4-4z"></path>
                     </g>
                   </svg>
-                  <div style={{ fontWeight: "bold" }}>프로필</div>
+                  <div style={{ fontWeight: 'bold' }}>프로필</div>
                 </>
               ) : (
                 <>
