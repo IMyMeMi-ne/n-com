@@ -1,8 +1,5 @@
 import CommentForm from '@/app/(afterLogin)/[username]/status/[id]/_component/CommentForm';
-import ActionButtons from '@/app/(afterLogin)/_component/ActionButtons';
 import style from './photoModal.module.css';
-import PhotoModalCloseButton from './_component/PhotoModalCloseButton';
-import { faker } from '@faker-js/faker';
 import {
   HydrationBoundary,
   dehydrate,
@@ -36,7 +33,7 @@ export default async function Default({ params }: Props) {
         <ImageZone id={id} />
         <div className={style.commentZone}>
           <SinglePost id={id} noImage />
-          <CommentForm />
+          <CommentForm id={id} />
           <Comments id={id} />
         </div>
       </HydrationBoundary>
