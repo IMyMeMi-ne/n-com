@@ -6,7 +6,7 @@ import Image from 'next/image';
 import FollowButton from '@/app/(afterLogin)/_component/FollowButton';
 import { useQuery } from '@tanstack/react-query';
 import { User } from '@/app/model/User';
-import { getUser } from '../../../_lib/getUser';
+import { getUser } from '../_lib/getUser';
 type Props = {
   username: string;
 };

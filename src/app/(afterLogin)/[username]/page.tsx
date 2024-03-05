@@ -7,7 +7,7 @@ import {
   dehydrate,
 } from '@tanstack/react-query';
 import UserPosts from './_component/UserPosts';
-import UserInfo from './status/[id]/_component/UserInfo';
+import UserInfo from './_component/UserInfo';
 
 type Props = {
   params: { username: string };
