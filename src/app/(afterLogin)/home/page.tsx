@@ -2,7 +2,6 @@ import style from './home.module.css';
 import TabProvider from './_component/TabProvider';
 import Tab from './_component/Tab';
 import PostForm from './_component/PostForm';
-import PostRecommends from './_component/PostRecommends';
 import TabDecider from './_component/TabDecider';
 import {
   dehydrate,
