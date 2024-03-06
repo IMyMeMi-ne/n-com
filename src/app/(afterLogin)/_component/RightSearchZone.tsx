@@ -1,14 +1,26 @@
-"use client";
-import SearchForm from "./SearchForm";
-import style from "./rightSearchZone.module.css";
-import { usePathname } from "next/navigation";
+'use client';
+
+import SearchForm from './SearchForm';
+import style from './rightSearchZone.module.css';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
 export default function RightSearchZone() {
   const pathname = usePathname();
-  const onChangeAll = () => {};
-  const onChangeFollow = () => {};
-  if (pathname === "/explore") return null;
-  if (pathname === "/search") {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const onChangeAll = () => {
+    let url = `/search?q=${searchParams.get('q')}`;
+    if (searchParams.has('f')) {
+      url += `&f=${searchParams.get('f')}`;
+    }
+    router.replace(url);
+  };
+  const onChangeFollow = () => {
+    let url = `/search/${searchParams.toString()}&pf=on`;
+    router.replace(url);
+  };
+  if (pathname === '/explore') return null;
+  if (pathname === '/search') {
     return (
       <div>
         <h5 className={style.filterTitle}>검색 필터</h5>
@@ -49,7 +61,7 @@ export default function RightSearchZone() {
     );
   }
   return (
-    <div style={{ marginBottom: 60, width: "inherit" }}>
+    <div style={{ marginBottom: 60, width: 'inherit' }}>
       <SearchForm />
     </div>
   );
