@@ -11,6 +11,7 @@ export default function RightSearchZone() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const onChangeAll = () => {
+    setSelectedFilter('all');
     let url = `/search?q=${searchParams.get('q')}`;
     if (searchParams.has('f')) {
       url += `&f=${searchParams.get('f')}`;
@@ -18,7 +19,8 @@ export default function RightSearchZone() {
     router.replace(url);
   };
   const onChangeFollow = () => {
-    let url = `/search/${searchParams.toString()}&pf=on`;
+    setSelectedFilter('follow');
+    let url = `/search?/${searchParams.toString()}&pf=on`;
     router.replace(url);
   };
   if (pathname === '/explore') return null;
