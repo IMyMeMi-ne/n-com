@@ -3,7 +3,7 @@
 import SearchForm from './SearchForm';
 import style from './rightSearchZone.module.css';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function RightSearchZone() {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -22,6 +22,15 @@ export default function RightSearchZone() {
     newSearchParams.set('pf', 'on');
     router.replace(`/search?${newSearchParams.toString()}`);
   };
+
+  useEffect(() => {
+    const pfParam = searchParams.get('pf');
+    if (pfParam === 'on') {
+      setSelectedFilter('follow');
+    } else {
+      setSelectedFilter('all');
+    }
+  }, [searchParams]);
   if (pathname === '/explore') return null;
   if (pathname === '/search') {
     return (
