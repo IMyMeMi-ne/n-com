@@ -4,11 +4,15 @@ import style from './modal.module.css';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 export default function TweetModal() {
   const [content, setContent] = useState('');
   const imageRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
   const onSubmit = () => {};
-  const onClickClose = () => {};
+  const onClickClose = () => {
+    router.back();
+  };
   const onClickButton = () => {};
   const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -35,8 +39,8 @@ export default function TweetModal() {
             <div className={style.postUserSection}>
               <div className={style.postUserImage}>
                 <Image
-                  src={me?.user?.image ?? ''}
-                  alt={me?.user?.email ?? ''}
+                  src={me?.user?.image as string}
+                  alt={me?.user?.email as string}
                   width={40}
                   height={40}
                   priority
