@@ -3,8 +3,8 @@
 import { useRef, useState } from 'react';
 import style from './commentForm.module.css';
 import Image from 'next/image';
-import { QueryClient } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
+import { useQueryClient } from '@tanstack/react-query';
 type Props = {
   id: string;
 };
@@ -16,8 +16,11 @@ export default function CommentForm({ id }: Props) {
   const onSubmit = () => {};
   const onChange = () => {};
 
-  const queryClient = new QueryClient();
+  const queryClient = useQueryClient();
   const post = queryClient.getQueryData(['posts', id]);
+  if (!post) {
+    return null;
+  }
   return (
     <form className={style.postForm} onSubmit={onSubmit}>
       <div className={style.postUserSection}>
