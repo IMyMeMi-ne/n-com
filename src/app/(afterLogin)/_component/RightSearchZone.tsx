@@ -20,7 +20,10 @@ export default function RightSearchZone() {
   };
   const onChangeFollow = () => {
     setSelectedFilter('follow');
-    let url = `/search?/${searchParams.toString()}&pf=on`;
+    let url = `/search?q=${searchParams.get('q')}&pf=on`;
+    if (searchParams.has('f')) {
+      url += `&f=${searchParams.get('f')}`;
+    }
     router.replace(url);
   };
   if (pathname === '/explore') return null;

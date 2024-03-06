@@ -17,7 +17,12 @@ export default function Tab() {
   };
   const onClickNew = () => {
     setCurrent('new');
-    router.replace(`/search?${searchParams.toString()}&f=live`);
+    router.replace(`/search?q=${searchParams.get('q')}&f=live`);
+    if (searchParams.has('pf')) {
+      router.replace(
+        `/search?q=${searchParams.get('q')}&f=live&pf=${searchParams.get('pf')}`
+      );
+    }
   };
 
   return (
