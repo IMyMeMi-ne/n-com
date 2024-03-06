@@ -9,20 +9,16 @@ export default function Tab() {
   const searchParams = useSearchParams();
   const onClickHot = () => {
     setCurrent('hot');
-    let url = `/search?q=${searchParams.get('q')}`;
-    if (searchParams.has('pf')) {
-      url += `&pf=${searchParams.get('pf')}`;
-    }
-    router.replace(url);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.delete('f');
+    router.replace(`/search?${newSearchParams.toString()}`);
   };
   const onClickNew = () => {
     setCurrent('new');
     router.replace(`/search?q=${searchParams.get('q')}&f=live`);
-    if (searchParams.has('pf')) {
-      router.replace(
-        `/search?q=${searchParams.get('q')}&f=live&pf=${searchParams.get('pf')}`
-      );
-    }
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set('f', 'live');
+    router.replace(`/search?${newSearchParams.toString()}`);
   };
 
   return (
