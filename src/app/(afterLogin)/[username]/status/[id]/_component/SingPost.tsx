@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Post as PostProps } from '@/app/model/Post';
 import { getSinglePost } from '../_lib/getSinglePost';
 import Post from '@/app/(afterLogin)/_component/Post';

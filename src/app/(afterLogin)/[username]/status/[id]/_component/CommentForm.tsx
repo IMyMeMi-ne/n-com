@@ -23,8 +23,8 @@ export default function CommentForm({ id }: Props) {
       <div className={style.postUserSection}>
         <div className={style.postUserImage}>
           <Image
-            src={me?.user?.image ?? ''}
-            alt={me?.user?.email ?? ''}
+            src={me?.user?.image as string}
+            alt={me?.user?.email as string}
             width={40}
             height={40}
           />

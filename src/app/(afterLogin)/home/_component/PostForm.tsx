@@ -22,7 +22,7 @@ export default function PostForm() {
       <div className={style.userSection}>
         <div className={style.userImage}>
           <Image
-            src={me?.user?.image ?? ''}
+            src={me?.user?.image as string}
             alt={me?.user?.email as string}
             width={40}
             height={40}
