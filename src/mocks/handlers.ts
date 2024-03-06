@@ -48,7 +48,7 @@ export const handlers = [
       },
     });
   }),
-  http.get('/api/postRecommends', async ({ request }) => {
+  http.get('/api/postRecommends?cursor=0', async ({ request }) => {
     await delay(3000);
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
