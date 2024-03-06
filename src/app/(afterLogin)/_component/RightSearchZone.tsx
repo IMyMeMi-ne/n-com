@@ -3,8 +3,10 @@
 import SearchForm from './SearchForm';
 import style from './rightSearchZone.module.css';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function RightSearchZone() {
+  const [selectedFilter, setSelectedFilter] = useState('all');
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -32,7 +34,7 @@ export default function RightSearchZone() {
               <input
                 type="radio"
                 name="pf"
-                defaultChecked
+                checked={selectedFilter === 'all'}
                 onChange={onChangeAll}
               />
             </div>
@@ -42,13 +44,14 @@ export default function RightSearchZone() {
                 type="radio"
                 name="pf"
                 value="on"
+                checked={selectedFilter === 'follow'}
                 onChange={onChangeFollow}
               />
             </div>
             <label>위치</label>
             <div className={style.radio}>
               <div>어디에서나</div>
-              <input type="radio" name="pf" defaultChecked />
+              <input type="radio" name="pf" />
             </div>
             <div className={style.radio}>
               <div>현 위치 주변</div>
