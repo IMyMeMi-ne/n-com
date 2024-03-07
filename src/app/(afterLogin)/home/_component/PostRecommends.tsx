@@ -7,20 +7,21 @@ import { Post as PostProps } from '@/app/model/Post';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 export default function PostRecommends() {
-  const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery<
-    PostProps[],
-    object,
-    InfiniteData<PostProps[]>,
-    [_1: string, _2: string],
-    number
-  >({
-    queryKey: ['posts', 'recommends'],
-    queryFn: getPostRecommends,
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-    initialPageParam: 0,
-    getNextPageParam: (lastpage) => lastpage.at(-1)?.postId,
-  });
+  const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
+    useInfiniteQuery<
+      PostProps[],
+      object,
+      InfiniteData<PostProps[]>,
+      [_1: string, _2: string],
+      number
+    >({
+      queryKey: ['posts', 'recommends'],
+      queryFn: getPostRecommends,
+      staleTime: 5 * 60 * 1000,
+      gcTime: 10 * 60 * 1000,
+      initialPageParam: 0,
+      getNextPageParam: (lastpage) => lastpage.at(-1)?.postId,
+    });
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -32,6 +33,10 @@ export default function PostRecommends() {
       !isFetching && hasNextPage && fetchNextPage();
     }
   }, [inView, fetchNextPage, isFetching, hasNextPage]);
+
+  if (isLoading) {
+    return;
+  }
   return (
     <>
       {data?.pages.map((page, i) => (
