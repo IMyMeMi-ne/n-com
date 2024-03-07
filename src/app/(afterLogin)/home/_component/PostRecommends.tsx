@@ -1,6 +1,6 @@
 'use client';
 
-import { InfiniteData, useInfiniteQuery } from '@tanstack/react-query';
+import { InfiniteData, useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { getPostRecommends } from '../_lib/getPostRecommends';
 import Post from '../../_component/Post';
 import { Post as PostProps } from '@/app/model/Post';
@@ -8,7 +8,7 @@ import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 export default function PostRecommends() {
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
-    useInfiniteQuery<
+    useSuspenseInfiniteQuery<
       PostProps[],
       object,
       InfiniteData<PostProps[]>,
@@ -34,9 +34,6 @@ export default function PostRecommends() {
     }
   }, [inView, fetchNextPage, isFetching, hasNextPage]);
 
-  if (isLoading) {
-    return;
-  }
   return (
     <>
       {data?.pages.map((page, i) => (
