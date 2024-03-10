@@ -3,9 +3,9 @@ import style from './logoutButton.module.css';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { Session } from 'next-auth';
+import { Session } from '@auth/core/types';
 type Props = {
-  me: Session;
+  me: Session | null;
 };
 export default function LogoutButton({ me }: Props) {
   const router = useRouter();

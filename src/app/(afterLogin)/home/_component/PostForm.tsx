@@ -2,8 +2,11 @@
 import style from './postForm.module.css';
 import { useState, useRef, ChangeEventHandler, FormEventHandler } from 'react';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
-export default function PostForm() {
+import { Session } from '@auth/core/types';
+type Props = {
+  me: Session | null;
+};
+export default function PostForm({ me }: Props) {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -15,7 +18,6 @@ export default function PostForm() {
   const onClickButton = () => {
     imageRef.current?.click();
   };
-  const { data: me } = useSession();
 
   return (
     <form className={style.postForm} onSubmit={onSubmit}>
