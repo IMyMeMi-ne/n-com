@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['avatars.githubusercontent.com', 'cloudflare-ipfs.com'],
+  async rewrites() {
+    return [
+      {
+        source: '/upload/:slug',
+        destination: 'http://localhost:9090/upload/:slug',
+      },
+    ];
   },
 };
 
