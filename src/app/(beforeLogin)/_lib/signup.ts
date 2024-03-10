@@ -10,6 +10,7 @@ const signup = async (prevState: any, formData: FormData) => {
   if (!formData.get('name') || !(formData.get('name') as string)?.trim()) {
     return { message: 'no_name' };
   }
+  formData.set('nickname', formData.get('name') as string);
   if (
     !formData.get('password') ||
     !(formData.get('password') as string)?.trim()
