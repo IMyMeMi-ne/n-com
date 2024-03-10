@@ -69,6 +69,7 @@ export default function LoginModal() {
                 onChange={onChangeId}
                 type="text"
                 placeholder=""
+                autoComplete="username"
               />
             </div>
             <div className={style.inputDiv}>
@@ -82,6 +83,7 @@ export default function LoginModal() {
                 onChange={onChangePassword}
                 type="password"
                 placeholder=""
+                autoComplete="current-password"
               />
             </div>
           </div>

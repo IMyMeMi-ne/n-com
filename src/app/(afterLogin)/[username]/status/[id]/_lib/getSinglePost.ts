@@ -10,6 +10,7 @@ export const getSinglePost: QueryFunction<
     next: {
       tags: ['posts', id],
     },
+    credentials: 'include',
   });
   if (!res.ok) {
     throw new Error('Network response was not ok');

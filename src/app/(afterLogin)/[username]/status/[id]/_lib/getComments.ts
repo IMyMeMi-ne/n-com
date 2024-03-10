@@ -10,6 +10,7 @@ export const getComments: QueryFunction<
     next: {
       tags: ['posts', id, 'comments'],
     },
+    credentials: 'include',
     cache: 'no-store',
   });
   if (!res.ok) {

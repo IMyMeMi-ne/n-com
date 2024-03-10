@@ -10,6 +10,7 @@ export const getUser: QueryFunction<
     next: {
       tags: ['users', username],
     },
+    credentials: 'include',
     cache: 'no-store',
   });
   if (!res.ok) {

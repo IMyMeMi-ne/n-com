@@ -14,6 +14,7 @@ export const getSearchResult: QueryFunction<
       next: {
         tags: ['posts', 'search', searchParams.q],
       },
+      credentials: 'include',
       cache: 'no-store',
     }
   );
