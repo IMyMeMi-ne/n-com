@@ -11,6 +11,7 @@ type Props = {
 export default function PostForm({ me }: Props) {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
+  const [previewImages, setPreviewImages] = useState<Array<string | null>>([]);
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setContent(e.target.value);
   };
@@ -19,6 +20,28 @@ export default function PostForm({ me }: Props) {
   };
   const onClickButton = () => {
     imageRef.current?.click();
+  };
+  const onChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (e.target.files) {
+      Array.from(e.target.files).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewImages((prevPreviewImages) => {
+            const prev = [...prevPreviewImages];
+            prev[index] = reader.result as string;
+            return prev;
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  };
+
+  const onRemoveImage = (index: number) => {
+    setPreviewImages((prevPreviewImages) =>
+      prevPreviewImages.filter((_, i) => i !== index)
+    );
   };
 
   return (
@@ -40,6 +63,17 @@ export default function PostForm({ me }: Props) {
           onChange={onChange}
           placeholder="무슨 일이 일어나고 있나요?"
         />
+        <div style={{ display: 'flex' }}>
+          {previewImages.map((v, i) => {
+            return (
+              v && (
+                <div key={i} onClick={() => onRemoveImage(i)}>
+                  <Image src={v} alt="preview" width={30} height={30} />
+                </div>
+              )
+            );
+          })}
+        </div>
         <div className={style.buttonSection}>
           <div className={style.footerButtons}>
             <div className={style.footerButtonLeft}>
@@ -49,6 +83,7 @@ export default function PostForm({ me }: Props) {
                 multiple
                 hidden
                 ref={imageRef}
+                onChange={onChangeImage}
               />
               <button
                 className={style.uploadButton}
