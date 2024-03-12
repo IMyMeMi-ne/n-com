@@ -4,6 +4,8 @@ import { useState, useRef, ChangeEventHandler, FormEventHandler } from 'react';
 import Image from 'next/image';
 import { Session } from '@auth/core/types';
 import TextareaAutosize from 'react-textarea-autosize';
+import { useQueryClient } from '@tanstack/react-query';
+import { Post } from '@/app/model/Post';
 
 type Props = {
   me: Session | null;
@@ -14,6 +16,7 @@ export default function PostForm({ me }: Props) {
   const [previewImages, setPreviewImages] = useState<
     Array<{ dataUrl: string; file: File } | null>
   >([]);
+  const queryClient = useQueryClient();
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setContent(e.target.value);
   };
@@ -24,12 +27,66 @@ export default function PostForm({ me }: Props) {
     previewImages.forEach((v) => {
       v && formData.append('images', v.file);
     });
-    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
-      method: 'POST',
-      credentials: 'include',
-      body: formData,
-    });
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          body: formData,
+        }
+      );
+      if (response.status === 201) {
+        setContent('');
+        setPreviewImages([]);
+        const newPost = await response.json();
+        queryClient.setQueryData(
+          ['posts', 'recommends'],
+          (prevData: { pages: Post[][] }) => {
+            const shallow = {
+              ...prevData,
+              pages: [...prevData.pages],
+            };
+            shallow.pages[0] = [...shallow.pages[0]];
+            shallow.pages[0].unshift(newPost);
+            return prevData;
+          }
+        );
+      }
+    } catch (err) {
+      alert('게시물을 작성하는 중 문제가 발생했습니다.');
+    }
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          body: formData,
+        }
+      );
+      if (response.status === 201) {
+        setContent('');
+        setPreviewImages([]);
+        const newPost = await response.json();
+        queryClient.setQueryData(
+          ['posts', 'followings'],
+          (prevData: { pages: Post[][] }) => {
+            const shallow = {
+              ...prevData,
+              pages: [...prevData.pages],
+            };
+            shallow.pages[0] = [...shallow.pages[0]];
+            shallow.pages[0].unshift(newPost);
+            return prevData;
+          }
+        );
+      }
+    } catch (err) {
+      alert('게시물을 작성하는 중 문제가 발생했습니다.');
+    }
   };
+
   const onClickButton = () => {
     imageRef.current?.click();
   };
