@@ -22,11 +22,12 @@ export default function PostForm({ me }: Props) {
     const formData = new FormData();
     formData.append('content', content);
     previewImages.forEach((v) => {
-      v && formData.append('imageFiles', v.file);
+      v && formData.append('images', v.file);
     });
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post`, {
+    await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
       method: 'POST',
       credentials: 'include',
+      body: formData,
     });
   };
   const onClickButton = () => {
