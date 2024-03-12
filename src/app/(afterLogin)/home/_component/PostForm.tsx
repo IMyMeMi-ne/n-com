@@ -11,12 +11,23 @@ type Props = {
 export default function PostForm({ me }: Props) {
   const imageRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
-  const [previewImages, setPreviewImages] = useState<Array<string | null>>([]);
+  const [previewImages, setPreviewImages] = useState<
+    Array<{ dataUrl: string; file: File } | null>
+  >([]);
   const onChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setContent(e.target.value);
   };
-  const onSubmit: FormEventHandler = (e) => {
+  const onSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('content', content);
+    previewImages.forEach((v) => {
+      v && formData.append('imageFiles', v.file);
+    });
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post`, {
+      method: 'POST',
+      credentials: 'include',
+    });
   };
   const onClickButton = () => {
     imageRef.current?.click();
@@ -29,7 +40,7 @@ export default function PostForm({ me }: Props) {
         reader.onloadend = () => {
           setPreviewImages((prevPreviewImages) => {
             const prev = [...prevPreviewImages];
-            prev[index] = reader.result as string;
+            prev[index] = { dataUrl: reader.result as string, file };
             return prev;
           });
         };
@@ -68,7 +79,7 @@ export default function PostForm({ me }: Props) {
             return (
               v && (
                 <div key={i} onClick={() => onRemoveImage(i)}>
-                  <Image src={v} alt="preview" width={30} height={30} />
+                  <Image src={v.dataUrl} alt="preview" width={30} height={30} />
                 </div>
               )
             );
