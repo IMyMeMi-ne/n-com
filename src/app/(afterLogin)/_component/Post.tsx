@@ -8,7 +8,6 @@ import PostArticle from '@/app/(afterLogin)/_component/PostArticle';
 import PostImages from '@/app/(afterLogin)/_component/PostImages';
 import { Post as PostProps } from '@/app/model/Post';
 import Image from 'next/image';
-import { faker } from '@faker-js/faker';
 dayjs.locale('ko');
 dayjs.extend(relativeTime);
 
@@ -18,12 +17,19 @@ type Props = {
 };
 export default function Post({ noImage, post }: Props) {
   const target = post;
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
 
   return (
     <PostArticle post={target}>
       <div className={style.postWrapper}>
         <div className={style.postUserSection}>
-          <Link href={`/${target.User.id}`} className={style.postUserImage}>
+          <Link
+            href={`/${target.User.id}`}
+            className={style.postUserImage}
+            onClick={stopPropagation}
+          >
             <Image
               src={target.User.image}
               alt={target.User.nickname}
@@ -35,7 +41,7 @@ export default function Post({ noImage, post }: Props) {
         </div>
         <div className={style.postBody}>
           <div className={style.postMeta}>
-            <Link href={`/${target.User.id}`}>
+            <Link href={`/${target.User.id}`} onClick={stopPropagation}>
               <span className={style.postUserName}>{target.User.nickname}</span>
               &nbsp;
               <span className={style.postUserId}>@{target.User.id}</span>

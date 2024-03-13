@@ -1,6 +1,7 @@
-"use client";
-import style from "./post.module.css";
-import cx from "classnames";
+'use client';
+import { MouseEventHandler } from 'react';
+import style from './post.module.css';
+import cx from 'classnames';
 
 type Props = {
   white?: boolean;
@@ -10,9 +11,18 @@ export default function ActionButtons({ white }: Props) {
   const reposted = false;
   const liked = false;
 
-  const onClickComment = () => {};
-  const onClickRepost = () => {};
-  const onClickHeart = () => {};
+  const onClickComment: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    console.log('comment');
+  };
+  const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    console.log('repost');
+  };
+  const onClickHeart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    console.log('heart');
+  };
 
   return (
     <div className={style.actionButtons}>
@@ -30,7 +40,7 @@ export default function ActionButtons({ white }: Props) {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{1 || ""}</div>
+        <div className={style.count}>{1 || ''}</div>
       </div>
       <div
         className={cx(
@@ -46,7 +56,7 @@ export default function ActionButtons({ white }: Props) {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{1 || ""}</div>
+        <div className={style.count}>{1 || ''}</div>
       </div>
       <div
         className={cx([
@@ -62,7 +72,7 @@ export default function ActionButtons({ white }: Props) {
             </g>
           </svg>
         </button>
-        <div className={style.count}>{0 || ""}</div>
+        <div className={style.count}>{0 || ''}</div>
       </div>
     </div>
   );
