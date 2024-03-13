@@ -12,5 +12,5 @@ export default function ExploreTrendSection() {
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
   });
-  return data?.map((trend) => <Trend key={trend.tagId} trend={trend} />);
+  return data?.map((trends) => <Trend key={trends.tagId} trend={trends} />);
 }
