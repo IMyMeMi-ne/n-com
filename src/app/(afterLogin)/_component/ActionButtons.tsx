@@ -9,7 +9,6 @@ import {
 } from '@tanstack/react-query';
 import { Post } from '@/app/model/Post';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 
 type Props = {
   white?: boolean;
@@ -18,7 +17,6 @@ type Props = {
 export default function ActionButtons({ white, post }: Props) {
   const queryClient = useQueryClient();
   const { data: session } = useSession();
-  const router = useRouter();
 
   const reposted = !!post.Reposts?.find(
     (v) => v.userId === session?.user?.email
