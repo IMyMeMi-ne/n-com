@@ -11,6 +11,10 @@ export const {
     signIn: '/i/flow/login',
     newUser: '/i/flow/signup',
   },
+  session: {
+    maxAge: 60 * 60 * 24,
+    updateAge: 60 * 60,
+  },
   providers: [
     CredentialsProvider({
       async authorize(credentials) {
