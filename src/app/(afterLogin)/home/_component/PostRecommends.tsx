@@ -7,7 +7,7 @@ import { Post as PostProps } from '@/app/model/Post';
 import { Fragment, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 export default function PostRecommends() {
-  const { data, fetchNextPage, hasNextPage, isFetching, isLoading } =
+  const { data, fetchNextPage, hasNextPage, isFetching } =
     useSuspenseInfiniteQuery<
       PostProps[],
       object,
