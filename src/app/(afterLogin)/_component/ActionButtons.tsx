@@ -49,7 +49,6 @@ export default function ActionButtons({ white, post }: Props) {
             console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
-              // 존재는 하는지
               const pageIndex = value.pages.findIndex((page) =>
                 page.includes(obj)
               );
@@ -71,7 +70,6 @@ export default function ActionButtons({ white, post }: Props) {
               queryClient.setQueryData(queryKey, shallow);
             }
           } else if (value) {
-            // 싱글 포스트인 경우
             if (value.postId === postId) {
               const shallow = {
                 ...value,
@@ -99,7 +97,6 @@ export default function ActionButtons({ white, post }: Props) {
             console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
-              // 존재는 하는지
               const pageIndex = value.pages.findIndex((page) =>
                 page.includes(obj)
               );
@@ -123,7 +120,6 @@ export default function ActionButtons({ white, post }: Props) {
               queryClient.setQueryData(queryKey, shallow);
             }
           } else if (value) {
-            // 싱글 포스트인 경우
             if (value.postId === postId) {
               const shallow = {
                 ...value,
@@ -166,14 +162,12 @@ export default function ActionButtons({ white, post }: Props) {
             console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
-              // 존재는 하는지
               const pageIndex = value.pages.findIndex((page) =>
                 page.includes(obj)
               );
               const index = value.pages[pageIndex].findIndex(
                 (v) => v.postId === postId
               );
-              console.log('found index', index);
               const shallow = { ...value };
               value.pages = { ...value.pages };
               value.pages[pageIndex] = [...value.pages[pageIndex]];
@@ -220,7 +214,6 @@ export default function ActionButtons({ white, post }: Props) {
             console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
-              // 존재는 하는지
               const pageIndex = value.pages.findIndex((page) =>
                 page.includes(obj)
               );
@@ -242,7 +235,6 @@ export default function ActionButtons({ white, post }: Props) {
               queryClient.setQueryData(queryKey, shallow);
             }
           } else if (value) {
-            // 싱글 포스트인 경우
             if (value.postId === postId) {
               const shallow = {
                 ...value,
@@ -285,7 +277,6 @@ export default function ActionButtons({ white, post }: Props) {
             console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
-              // 존재는 하는지
               const pageIndex = value.pages.findIndex((page) =>
                 page.includes(obj)
               );
@@ -308,7 +299,6 @@ export default function ActionButtons({ white, post }: Props) {
               queryClient.setQueryData(queryKey, shallow);
             }
           } else if (value) {
-            // 싱글 포스트인 경우
             if (value.postId === postId) {
               const shallow = {
                 ...value,
