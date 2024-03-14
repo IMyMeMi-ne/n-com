@@ -3,6 +3,7 @@ import style from './followRecommend.module.css';
 import Image from 'next/image';
 import FollowButton from './FollowButton';
 import { User } from '@/app/model/User';
+
 type Props = {
   user: User;
 };
@@ -19,7 +20,7 @@ export default function FollowRecommend({ user }: Props) {
         <div className={style.userId}>{user.id}</div>
         <div className={style.userHashTag}>{user.nickname}</div>
       </div>
-      <FollowButton />
+      <FollowButton user={user} />
     </div>
   );
 }
