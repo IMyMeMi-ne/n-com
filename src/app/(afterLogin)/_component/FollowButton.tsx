@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import { User } from '@/app/model/User';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import cx from 'classnames';
+import { MouseEventHandler } from 'react';
 type Props = {
   user: User;
 };
@@ -13,7 +14,7 @@ export default function FollowButton({ user }: Props) {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const followed = !!user.Followers.find(
+  const followed = !!user?.Followers.find(
     (v) => v.userId === session?.user?.email
   );
   const queryClient = useQueryClient();
@@ -87,7 +88,9 @@ export default function FollowButton({ user }: Props) {
       console.error('err');
     },
   });
-  const onFollow = () => {
+  const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (!session) {
       router.push('/login');
     }
