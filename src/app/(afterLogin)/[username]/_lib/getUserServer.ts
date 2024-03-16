@@ -2,7 +2,7 @@ import { QueryFunction } from '@tanstack/query-core';
 import { User } from '@/app/model/User';
 import { cookies } from 'next/headers';
 
-export const getUser: QueryFunction<
+export const getUserServer: QueryFunction<
   User,
   [_1: string, username: string]
 > = async ({ queryKey }) => {
