@@ -14,9 +14,7 @@ export default function FollowButton({ user }: Props) {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const followed = !!user?.Followers.find(
-    (v) => v.userId === session?.user?.email
-  );
+  const followed = !!user?.Followers.find((v) => v.id === session?.user?.email);
   const queryClient = useQueryClient();
   const follow = useMutation({
     mutationFn: (userId: string) => {
@@ -35,11 +33,10 @@ export default function FollowButton({ user }: Props) {
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         const shallow = [...value];
         shallow[index] = {
           ...shallow[index],
-          Followers: [{ userId: session?.user?.email as string }],
+          Followers: [{ id: session?.user?.email as string }],
           _count: {
             ...shallow[index]._count,
             Followers: shallow[index]._count?.Followers + 1,
@@ -74,7 +71,7 @@ export default function FollowButton({ user }: Props) {
         shallow[index] = {
           ...shallow[index],
           Followers: shallow[index].Followers.filter(
-            (v) => v.userId !== session?.user?.email
+            (v) => v.id !== session?.user?.email
           ),
           _count: {
             ...shallow[index]._count,
@@ -90,7 +87,7 @@ export default function FollowButton({ user }: Props) {
           const shallow = {
             ...value2,
             Followers: value2.Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...value2._count,
@@ -104,7 +101,6 @@ export default function FollowButton({ user }: Props) {
   });
   const unFollow = useMutation({
     mutationFn: (userId: string) => {
-      console.log('unfollow', userId);
       return fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${userId}/follow`,
         {
@@ -120,12 +116,11 @@ export default function FollowButton({ user }: Props) {
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         const shallow = [...value];
         shallow[index] = {
           ...shallow[index],
           Followers: shallow[index].Followers.filter(
-            (v) => v.userId !== session?.user?.email
+            (v) => v.id !== session?.user?.email
           ),
           _count: {
             ...shallow[index]._count,
@@ -141,7 +136,7 @@ export default function FollowButton({ user }: Props) {
           const shallow = {
             ...value2,
             Followers: value2.Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...value2._count,
@@ -159,11 +154,10 @@ export default function FollowButton({ user }: Props) {
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         const shallow = [...value];
         shallow[index] = {
           ...shallow[index],
-          Followers: [{ userId: session?.user?.email as string }],
+          Followers: [{ id: session?.user?.email as string }],
           _count: {
             ...shallow[index]._count,
             Followers: shallow[index]._count?.Followers + 1,

@@ -37,14 +37,12 @@ export default function ActionButtons({ white, post }: Props) {
     onMutate() {
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
+
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
-          console.log(queryKey[0]);
           const value: Post | InfiniteData<Post[]> | undefined =
             queryClient.getQueryData(queryKey);
           if (value && 'pages' in value) {
-            console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
               const pageIndex = value.pages.findIndex((page) =>
@@ -53,7 +51,6 @@ export default function ActionButtons({ white, post }: Props) {
               const index = value.pages[pageIndex].findIndex(
                 (v) => v.postId === postId
               );
-              console.log('found index', index);
               const shallow = { ...value };
               value.pages = { ...value.pages };
               value.pages[pageIndex] = [...value.pages[pageIndex]];
@@ -86,13 +83,11 @@ export default function ActionButtons({ white, post }: Props) {
     onError() {
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
           const value: Post | InfiniteData<Post[]> | undefined =
             queryClient.getQueryData(queryKey);
           if (value && 'pages' in value) {
-            console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
               const pageIndex = value.pages.findIndex((page) =>
@@ -101,7 +96,6 @@ export default function ActionButtons({ white, post }: Props) {
               const index = value.pages[pageIndex].findIndex(
                 (v) => v.postId === postId
               );
-              console.log('found index', index);
               const shallow = { ...value };
               value.pages = { ...value.pages };
               value.pages[pageIndex] = [...value.pages[pageIndex]];
@@ -151,13 +145,11 @@ export default function ActionButtons({ white, post }: Props) {
     onMutate() {
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
           const value: Post | InfiniteData<Post[]> | undefined =
             queryClient.getQueryData(queryKey);
           if (value && 'pages' in value) {
-            console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
               const pageIndex = value.pages.findIndex((page) =>
@@ -202,14 +194,11 @@ export default function ActionButtons({ white, post }: Props) {
     onError() {
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
-          console.log(queryKey[0]);
           const value: Post | InfiniteData<Post[]> | undefined =
             queryClient.getQueryData(queryKey);
           if (value && 'pages' in value) {
-            console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
               const pageIndex = value.pages.findIndex((page) =>
@@ -218,7 +207,6 @@ export default function ActionButtons({ white, post }: Props) {
               const index = value.pages[pageIndex].findIndex(
                 (v) => v.postId === postId
               );
-              console.log('found index', index);
               const shallow = { ...value };
               value.pages = { ...value.pages };
               value.pages[pageIndex] = [...value.pages[pageIndex]];
@@ -265,14 +253,11 @@ export default function ActionButtons({ white, post }: Props) {
       const data = await response.json();
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
-          console.log(queryKey[0]);
           const value: Post | InfiniteData<Post[]> | undefined =
             queryClient.getQueryData(queryKey);
           if (value && 'pages' in value) {
-            console.log('array', value);
             const obj = value.pages.flat().find((v) => v.postId === postId);
             if (obj) {
               const pageIndex = value.pages.findIndex((page) =>
@@ -281,7 +266,6 @@ export default function ActionButtons({ white, post }: Props) {
               const index = value.pages[pageIndex].findIndex(
                 (v) => v.postId === postId
               );
-              console.log('found index', index);
               const shallow = { ...value };
               value.pages = { ...value.pages };
               value.pages[pageIndex] = [...value.pages[pageIndex]];
@@ -327,7 +311,6 @@ export default function ActionButtons({ white, post }: Props) {
     onSuccess() {
       const queryCache = queryClient.getQueryCache();
       const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
-      console.log('queryKeys', queryKeys);
       queryKeys.forEach((queryKey) => {
         if (queryKey[0] === 'posts') {
           const value: Post | InfiniteData<Post[]> | undefined =

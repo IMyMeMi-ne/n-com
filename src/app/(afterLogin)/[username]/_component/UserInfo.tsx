@@ -28,7 +28,6 @@ export default function UserInfo({ username, session }: Props) {
   const queryClient = useQueryClient();
   const follow = useMutation({
     mutationFn: (userId: string) => {
-      console.log('follow', userId);
       return fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${userId}/follow`,
         {
@@ -45,11 +44,10 @@ export default function UserInfo({ username, session }: Props) {
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
         if (index > -1) {
-          console.log(value, userId, index);
           const shallow = [...value];
           shallow[index] = {
             ...shallow[index],
-            Followers: [{ userId: session?.user?.email as string }],
+            Followers: [{ id: session?.user?.email as string }],
             _count: {
               ...shallow[index]._count,
               Followers: shallow[index]._count?.Followers + 1,
@@ -65,7 +63,7 @@ export default function UserInfo({ username, session }: Props) {
       if (value2) {
         const shallow: User = {
           ...value2,
-          Followers: [{ userId: session?.user?.email as string }],
+          Followers: [{ id: session?.user?.email as string }],
           _count: {
             ...value2._count,
             Followers: value2._count?.Followers + 1,
@@ -75,20 +73,18 @@ export default function UserInfo({ username, session }: Props) {
       }
     },
     onError(error, userId: string) {
-      console.error(error);
       const value: User[] | undefined = queryClient.getQueryData([
         'users',
         'followRecommends',
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         if (index > -1) {
           const shallow = [...value];
           shallow[index] = {
             ...shallow[index],
             Followers: shallow[index].Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...shallow[index]._count,
@@ -105,7 +101,7 @@ export default function UserInfo({ username, session }: Props) {
           const shallow = {
             ...value2,
             Followers: value2.Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...value2._count,
@@ -119,7 +115,6 @@ export default function UserInfo({ username, session }: Props) {
   });
   const unfollow = useMutation({
     mutationFn: (userId: string) => {
-      console.log('unfollow', userId);
       return fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${userId}/follow`,
         {
@@ -135,13 +130,12 @@ export default function UserInfo({ username, session }: Props) {
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         if (index > -1) {
           const shallow = [...value];
           shallow[index] = {
             ...shallow[index],
             Followers: shallow[index].Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...shallow[index]._count,
@@ -158,7 +152,7 @@ export default function UserInfo({ username, session }: Props) {
           const shallow = {
             ...value2,
             Followers: value2.Followers.filter(
-              (v) => v.userId !== session?.user?.email
+              (v) => v.id !== session?.user?.email
             ),
             _count: {
               ...value2._count,
@@ -170,19 +164,17 @@ export default function UserInfo({ username, session }: Props) {
       }
     },
     onError(error, userId: string) {
-      console.error(error);
       const value: User[] | undefined = queryClient.getQueryData([
         'users',
         'followRecommends',
       ]);
       if (value) {
         const index = value.findIndex((v) => v.id === userId);
-        console.log(value, userId, index);
         if (index > -1) {
           const shallow = [...value];
           shallow[index] = {
             ...shallow[index],
-            Followers: [{ userId: session?.user?.email as string }],
+            Followers: [{ id: session?.user?.email as string }],
             _count: {
               ...shallow[index]._count,
               Followers: shallow[index]._count?.Followers + 1,
@@ -198,7 +190,7 @@ export default function UserInfo({ username, session }: Props) {
       if (value2) {
         const shallow = {
           ...value2,
-          Followers: [{ userId: session?.user?.email as string }],
+          Followers: [{ id: session?.user?.email as string }],
           _count: {
             ...value2._count,
             Followers: value2._count?.Followers + 1,
@@ -241,15 +233,11 @@ export default function UserInfo({ username, session }: Props) {
     return null;
   }
 
-  const followed = user.Followers?.find(
-    (v) => v.userId === session?.user?.email
-  );
-  console.log(session?.user?.email, followed);
+  const followed = user.Followers?.find((v) => v.id === session?.user?.email);
 
   const onFollow: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    console.log('follow', followed, user.id);
     if (followed) {
       unfollow.mutate(user.id);
     } else {

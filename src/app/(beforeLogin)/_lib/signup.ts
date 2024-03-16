@@ -31,7 +31,6 @@ const signup = async (prevState: any, formData: FormData) => {
       }
     );
     const responseData = await response.json();
-    console.log(responseData);
     if (response.status === 403) {
       return { message: 'user_exists' };
     }
