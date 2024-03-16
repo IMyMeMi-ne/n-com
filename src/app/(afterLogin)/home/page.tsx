@@ -7,6 +7,10 @@ import { Suspense } from 'react';
 import Loading from './loading';
 import { auth } from '@/auth';
 
+export const metadata = {
+  title: '홈 / N',
+  descreption: '홈',
+};
 export default async function HomePage() {
   const session = await auth();
   return (

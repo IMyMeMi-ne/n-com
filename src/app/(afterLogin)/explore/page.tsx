@@ -1,6 +1,11 @@
 import SearchForm from '../_component/SearchForm';
 import ExploreTrendSection from './_component/ExploreTrendSection';
 import style from './explore.module.css';
+
+export const metadata = {
+  title: '탐색 / N',
+  description: '탐색',
+};
 export default function ExplorePage() {
   return (
     <main className={style.main}>

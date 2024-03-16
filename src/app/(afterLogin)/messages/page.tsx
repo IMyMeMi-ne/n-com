@@ -1,5 +1,10 @@
-import style from "./message.module.css";
-import Room from "./_component/Room";
+import style from './message.module.css';
+import Room from './_component/Room';
+
+export const metadata = {
+  title: '쪽지 / N',
+  descreption: '쪽지',
+};
 
 export default function Home() {
   return (

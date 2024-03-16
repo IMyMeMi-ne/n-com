@@ -1,10 +1,8 @@
-import { QueryFunction } from '@tanstack/query-core';
-import { Post as PostProps } from '@/app/model/Post';
-
-export const getSinglePost: QueryFunction<
-  PostProps,
-  [_1: string, id: string]
-> = async ({ queryKey }) => {
+export const getSinglePost = async ({
+  queryKey,
+}: {
+  queryKey: [string, string];
+}) => {
   const [_1, id] = queryKey;
   const res = await fetch(`http://localhost:9090/api/posts/${id}`, {
     next: {
