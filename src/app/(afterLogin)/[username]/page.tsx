@@ -1,5 +1,5 @@
 import style from './profile.module.css';
-import { getUser } from './_lib/getUser';
+import { getUserServer } from './_lib/getUserServer';
 import { getUserPosts } from './_lib/getUserPosts';
 import {
   HydrationBoundary,
@@ -19,7 +19,7 @@ export default async function Profile({ params }: Props) {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ['users', username],
-    queryFn: getUser,
+    queryFn: getUserServer,
   });
   await queryClient.prefetchQuery({
     queryKey: ['posts', 'users', username],
