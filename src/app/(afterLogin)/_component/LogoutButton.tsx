@@ -4,17 +4,26 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { Session } from '@auth/core/types';
+import { useQueryClient } from '@tanstack/react-query';
 type Props = {
   me: Session | null;
 };
 export default function LogoutButton({ me }: Props) {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const onLogout = () => {
+    queryClient.invalidateQueries({
+      queryKey: ['posts'],
+    });
+    queryClient.invalidateQueries({
+      queryKey: ['users'],
+    });
     signOut({ redirect: false }).then(() => {
       router.replace('/');
     });
   };
+
   if (!me?.user) {
     return null;
   }
