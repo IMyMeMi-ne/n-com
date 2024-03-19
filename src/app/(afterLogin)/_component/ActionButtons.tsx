@@ -244,7 +244,7 @@ export default function ActionButtons({ white, post }: Props) {
       return fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${post.postId}/reposts`,
         {
-          method: 'post',
+          method: 'POST',
           credentials: 'include',
         }
       );
@@ -367,13 +367,24 @@ export default function ActionButtons({ white, post }: Props) {
 
   const onClickComment: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
+    const formData = new FormData();
+    formData.append('content', '답글');
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${post.postId}/comments`, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+    });
   };
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     if (!reposted) {
-      repost.mutate();
-    } else {
-      deleteRepost.mutate();
+      const formData = new FormData();
+      formData.append('content', '재게시');
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${post.postId}/reposts`, {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+      });
     }
   };
   const onClickHeart: MouseEventHandler<HTMLButtonElement> = (e) => {
