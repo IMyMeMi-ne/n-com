@@ -64,7 +64,7 @@ export default function PostForm({ me }: Props) {
         );
       }
     },
-    onError(error) {
+    onError() {
       alert('업로드 중 에러가 발생했습니다.');
     },
   });

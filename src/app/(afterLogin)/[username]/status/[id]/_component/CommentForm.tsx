@@ -1,10 +1,10 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import style from './commentForm.module.css';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import { useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 type Props = {
   id: string;
 };
@@ -12,9 +12,28 @@ export default function CommentForm({ id }: Props) {
   const [content, setContent] = useState('');
   const imageRef = useRef<HTMLInputElement>(null);
   const { data: me } = useSession();
-  const onClickButton = () => {};
-  const onSubmit = () => {};
-  const onChange = () => {};
+  const onClickButton = () => {
+    imageRef.current?.click();
+  };
+  const mutation = useMutation({
+    mutationFn: async (e: FormEvent) => {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('content', content);
+      return fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${id}/comments`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          body: formData,
+        }
+      );
+    },
+  });
+
+  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
 
   const queryClient = useQueryClient();
   const post = queryClient.getQueryData(['posts', id]);
@@ -22,7 +41,7 @@ export default function CommentForm({ id }: Props) {
     return null;
   }
   return (
-    <form className={style.postForm} onSubmit={onSubmit}>
+    <form className={style.postForm} onSubmit={mutation.mutate}>
       <div className={style.postUserSection}>
         <div className={style.postUserImage}>
           <Image

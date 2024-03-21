@@ -13,7 +13,9 @@ export default function TweetModal() {
   const onClickClose = () => {
     router.back();
   };
-  const onClickButton = () => {};
+  const onClickButton = () => {
+    imageRef.current?.click();
+  };
   const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
   };
