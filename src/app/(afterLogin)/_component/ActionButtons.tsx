@@ -242,7 +242,7 @@ export default function ActionButtons({ white, post }: Props) {
   const repost = useMutation({
     mutationFn: () => {
       return fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${post.postId}/reposts`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${postId}/reposts`,
         {
           method: 'POST',
           credentials: 'include',
@@ -301,7 +301,7 @@ export default function ActionButtons({ white, post }: Props) {
   const deleteRepost = useMutation({
     mutationFn: () => {
       return fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${post.postId}/reposts`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/${postId}/reposts`,
         {
           method: 'delete',
           credentials: 'include',
@@ -369,7 +369,7 @@ export default function ActionButtons({ white, post }: Props) {
     e.stopPropagation();
     const formData = new FormData();
     formData.append('content', '답글');
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${post.postId}/comments`, {
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${postId}/comments`, {
       method: 'POST',
       body: formData,
       credentials: 'include',
@@ -378,13 +378,9 @@ export default function ActionButtons({ white, post }: Props) {
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     if (!reposted) {
-      const formData = new FormData();
-      formData.append('content', '재게시');
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${post.postId}/reposts`, {
-        method: 'POST',
-        body: formData,
-        credentials: 'include',
-      });
+      repost.mutate();
+    } else {
+      deleteRepost.mutate();
     }
   };
   const onClickHeart: MouseEventHandler<HTMLButtonElement> = (e) => {
