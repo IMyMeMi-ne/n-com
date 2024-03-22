@@ -367,13 +367,6 @@ export default function ActionButtons({ white, post }: Props) {
 
   const onClickComment: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
-    const formData = new FormData();
-    formData.append('content', '답글');
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/${postId}/comments`, {
-      method: 'POST',
-      body: formData,
-      credentials: 'include',
-    });
   };
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
