@@ -9,7 +9,8 @@ import {
 } from '@tanstack/react-query';
 import { Post } from '@/app/model/Post';
 import { useSession } from 'next-auth/react';
-
+import { useRouter } from 'next/navigation';
+import { useModalStore } from '@/store/modal';
 type Props = {
   white?: boolean;
   post: Post;
@@ -23,7 +24,8 @@ export default function ActionButtons({ white, post }: Props) {
   );
   const liked = !!post.Hearts?.find((v) => v.userId === session?.user?.email);
   const { postId } = post;
-
+  const router = useRouter();
+  const modalStore = useModalStore();
   const heart = useMutation({
     mutationFn: () => {
       return fetch(
@@ -367,6 +369,9 @@ export default function ActionButtons({ white, post }: Props) {
 
   const onClickComment: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
+    modalStore.setMode('comment');
+    modalStore.setData(post);
+    router.push('/compose/tweet');
   };
   const onClickRepost: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
