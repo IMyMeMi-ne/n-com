@@ -6,6 +6,7 @@ interface modalState {
   data: Post | null;
   setMode(mode: 'new' | 'comment'): void;
   setData(data: Post): void;
+  reset(): void;
 }
 export const useModalStore = create<modalState>((set) => ({
   mode: 'new',
