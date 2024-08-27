@@ -18,7 +18,7 @@ type Props = {
   params: { id: string; username: string };
 };
 
-export async function generateMetaData({ params }: Props) {
+export async function generateMetadata({ params }: Props) {
   const post: Post = await getUserServer({ queryKey: ['posts', params.id] });
   const user: User = await getUserServer({
     queryKey: ['users', params.username],
