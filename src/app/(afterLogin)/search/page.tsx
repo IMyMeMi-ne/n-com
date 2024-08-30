@@ -8,7 +8,7 @@ type Props = {
   searchParams: { q: string; f?: string; pf?: string };
 };
 
-export async function generateMetadata({
+export async function generateMetaData({
   searchParams,
 }: Props): Promise<Metadata> {
   return {
