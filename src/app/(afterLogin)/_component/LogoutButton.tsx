@@ -24,6 +24,7 @@ export default function LogoutButton({ me }: Props) {
         method: 'POST',
         credentials: 'include',
       });
+      signOut({ callbackUrl: '/' });
       router.replace('/');
     });
   };

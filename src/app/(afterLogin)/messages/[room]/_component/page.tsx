@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import style from './chatRoom.module.css';
 import Link from 'next/link';
-import BackButton from '../../_component/BackButton';
+import BackButton from '../../../_component/BackButton';
 import cx from 'classnames';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';

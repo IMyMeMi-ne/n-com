@@ -1,5 +1,5 @@
 import style from './message.module.css';
-import Room from './_component/Room';
+import Room from '../_component/Room';
 
 export const metadata = {
   title: '쪽지 / N',
